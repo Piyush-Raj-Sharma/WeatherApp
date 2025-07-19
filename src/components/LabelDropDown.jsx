@@ -1,9 +1,22 @@
-import React from 'react'
 
-const LabelDropDown = () => {
+const labels = ["Home", "Work", "Travel", "Other"];
+
+const LabelDropdown = ({ selectedLabel, setSelectedLabel }) => {
   return (
-    <div>LabelDropDown</div>
-  )
-}
+    <select
+      className="border rounded-md p-2 bg-white text-black"
+      value={selectedLabel}
+      onChange={(e) => setSelectedLabel(e.target.value)}
+    >
+      <option value="">Select Label</option>
+      {labels.map((label) => (
+        <option key={label} value={label}>
+          {label}
+        </option>
+      ))}
+    </select>
+  );
+};
 
-export default LabelDropDown
+export default LabelDropdown;
+
