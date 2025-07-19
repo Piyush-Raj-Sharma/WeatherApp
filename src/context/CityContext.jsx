@@ -4,10 +4,11 @@ import { loadFromLocal, saveToLocal } from "../utils/localStorage";
 const CityContext = createContext();
 
 export const CityProvider = ({ children }) => {
-  const [cities, setCities] = useState(() => loadFromLocal("cities" || []));
+  const [cities, setCities] = useState(() => loadFromLocal("cities") || []);
 
   const addCity = (cityObj) => {
     setCities((prev) => {
+      if (prev.some((city) => city.name === cityObj.name)) return prev;
       const updated = [...prev, cityObj];
       saveToLocal("cities", updated);
       return updated;
@@ -19,8 +20,14 @@ export const CityProvider = ({ children }) => {
     setCities(updated);
     saveToLocal("cities", updated);
   };
+
+  const clearCities = () => {
+    setCities([]);
+    saveToLocal("cities", []);
+  };
+
   return (
-    <CityContext.Provider value={{ cities, addCity, removeCity }}>
+    <CityContext.Provider value={{ cities, addCity, removeCity, clearCities }}>
       {children}
     </CityContext.Provider>
   );
