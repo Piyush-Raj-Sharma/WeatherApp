@@ -6,10 +6,18 @@ const CityContext = createContext();
 export const CityProvider = ({ children }) => {
   const [cities, setCities] = useState(() => loadFromLocal("cities") || []);
 
-  const addCity = (cityObj) => {
+  const addCity = (name, label) => {
     setCities((prev) => {
-      if (prev.some((city) => city.name === cityObj.name)) return prev;
-      const updated = [...prev, cityObj];
+      if (prev.some((city) => city.name.toLowerCase() === name.toLowerCase()))
+        return prev;
+
+      const newCity = {
+        id: Date.now(), 
+        name,
+        label,
+      };
+
+      const updated = [...prev, newCity];
       saveToLocal("cities", updated);
       return updated;
     });
