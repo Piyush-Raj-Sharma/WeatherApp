@@ -1,4 +1,3 @@
-import React from "react";
 import { Home, Briefcase, MapPin, Plane, Landmark } from "lucide-react";
 
 const predefinedLabels = [
@@ -26,23 +25,6 @@ const LabelDropDown = ({ selectedLabel, setSelectedLabel }) => {
         ))}
       </select>
 
-      {/* {selectedLabel && (
-        <div className="flex items-center gap-2 mt-2 text-sm text-gray-600">
-          {predefinedLabels.find((item) => item.value === selectedLabel)
-            ?.icon &&
-            React.createElement(
-              predefinedLabels.find((item) => item.value === selectedLabel)
-                .icon,
-              { size: 18 }
-            )}
-          <span>
-            {
-              predefinedLabels.find((item) => item.value === selectedLabel)
-                ?.label
-            }
-          </span>
-        </div>
-      )} */}
     </div>
   );
 };

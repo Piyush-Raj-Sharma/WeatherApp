@@ -7,7 +7,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <CityProvider>
-        <div className="min-h-screen w-screen bg-slate-100 text-slate-900 p-4">
+        <div className="min-h-screen w-full bg-slate-100 text-slate-900 px-4 py-4 overflow-x-hidden">
           <Navbar/>
           <MainRoutes />
         </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCityContext } from "../context/CityContext";
 import LabelDropdown from "./LabelDropDown";
-import Loader from "./Loader";
+import { LoaderCircle } from "lucide-react"; 
 
 const AddCityForm = () => {
   const { addCity, error } = useCityContext();
@@ -30,7 +30,6 @@ const AddCityForm = () => {
       onSubmit={handleSubmit}
       className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-end bg-white p-4 rounded-lg shadow-md w-full max-w-3xl mx-auto"
     >
-      {/* Input */}
       <div className="flex flex-col w-full sm:flex-1">
         <label className="text-sm font-medium text-gray-700 mb-1">
           City Name
@@ -44,7 +43,6 @@ const AddCityForm = () => {
         />
       </div>
 
-      {/* Dropdown */}
       <div className="flex flex-col w-full sm:w-56">
         <LabelDropdown
           selectedLabel={selectedLabel}
@@ -52,14 +50,20 @@ const AddCityForm = () => {
         />
       </div>
 
-      {/* Submit Button */}
       <div className="flex flex-col w-full sm:w-auto">
         <button
           type="submit"
           disabled={loading}
-          className="mt-5 sm:mt-0 bg-blue-600 px-4 py-2 rounded-md text-white hover:bg-blue-700 w-full sm:w-auto"
+          className="mt-5 sm:mt-0 bg-blue-600 px-4 py-2 rounded-md text-white hover:bg-blue-700 w-full sm:w-auto flex items-center justify-center gap-2"
         >
-          {loading ? <Loader size="sm" color="#fff" /> : "Add City"}
+          {loading ? (
+            <>
+              <LoaderCircle className="animate-spin" size={18} />
+              Loading...
+            </>
+          ) : (
+            "Add City"
+          )}
         </button>
       </div>
 

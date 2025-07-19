@@ -6,13 +6,13 @@ const CityCard = ({ city, onDelete }) => {
   const navigate = useNavigate();
 
   const showWeatherDetails = () => {
-    localStorage.setItem("mainCity", city.name); // no need to remove before setting
-    navigate("/"); // go to dashboard
+    localStorage.setItem("mainCity", city.name); 
+    navigate("/"); 
   };
 
   const handleDelete = (e) => {
-    e.stopPropagation(); // prevent card click from firing
-    onDelete(city.id); // trigger delete
+    e.stopPropagation(); 
+    onDelete(city.id);
   };
 
   return (
